@@ -1,10 +1,14 @@
 {
   "name": "dnascoringservice",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --config nodemon.json src/app.ts",
+    "dev:debug": "nodemon --config nodemon.json --inspect-brk src/app.ts",
+    "build": "tsc && cp package.json dist/package.json && cp -R node_modules dist/node_modules",
+    "start": "tsc && node dist/app.js",
+    "test": "mocha -r ts-node/register ./src/test/test.ts --timeout 20000 --exit"
   },
   "repository": {
     "type": "git",
